@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Apartment {
+  id      String   @id @default(cuid())
+  name    String
+  address String
+  moveIn  DateTime
+  rent    Rent
+  fees    Fees
+}
+
+model Rent {
+  id      String    @id @default(cuid())
+  for     Apartment @relation(fields: [id], references: [id])
+  monthly Float
+  pet     Float
+}
+
+model Fees {
+  id          String    @id @default(cuid())
+  for         Apartment @relation(fields: [id], references: [id])
+  admin       Float
+  application Float
+  pet         Float
+}

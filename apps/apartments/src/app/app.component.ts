@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@final/api-interfaces';
+import { ApartmentListDTO } from '@final/api-interfaces';
 
 @Component({
   selector: 'final-root',
@@ -8,6 +9,8 @@ import { Message } from '@final/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
+  public readonly apartments$ = this.http.get<ApartmentListDTO>(
+    '/api/apartments'
+  );
 }

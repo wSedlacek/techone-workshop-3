@@ -1,15 +1,22 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
-import { Message } from '@final/api-interfaces';
+import { ApartmentDetailsDTO, ApartmentListDTO } from '@final/api-interfaces';
 
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('apartments')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly service: AppService) {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Get()
+  public async getApartments(): Promise<ApartmentListDTO> {
+    return this.service.getApartments();
+  }
+
+  @Get('/:id')
+  public async getDetails(
+    @Param('id') id: string
+  ): Promise<ApartmentDetailsDTO> {
+    return this.service.getDetails(id);
   }
 }

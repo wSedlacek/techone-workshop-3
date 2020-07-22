@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "postinstall": "yarn nx:setup && yarn ngcc:setup && yarn prisma:generate",
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
@@ -27,7 +27,15 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "prisma": "prisma"
+    "nx:setup": "node ./tools/scripts/decorate-angular-cli.js",
+    "ngcc:setup": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "prisma": "prisma",
+    "prisma:sync": "yarn prisma:migrate && yarn prisma:generate",
+    "prisma:migrate": "yarn prisma:migrate:save && yarn prisma:migrate:up",
+    "prisma:migrate:save": "prisma migrate save --experimental",
+    "prisma:migrate:up": "prisma migrate up --experimental",
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "ts-node --project prisma/tsconfig.json -r tsconfig-paths/register ./prisma/seed"
   },
   "private": true,
   "dependencies": {
