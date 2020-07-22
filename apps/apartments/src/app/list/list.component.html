@@ -1,0 +1,9 @@
+<mat-card *ngFor="let apartment of apartments$ | async; trackBy: trackById">
+  <mat-card-header>
+    <mat-card-title>{{ apartment.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-button [routerLink]="apartment.id">Details</button>
+    <button mat-button>Apply</button>
+  </mat-card-actions>
+</mat-card>

@@ -25,7 +25,10 @@
               "apps/apartments/src/favicon.ico",
               "apps/apartments/src/assets"
             ],
-            "styles": ["apps/apartments/src/styles.scss"],
+            "styles": [
+              "node_modules/modern-normalize",
+              "apps/apartments/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

@@ -1,0 +1,9 @@
+:host {
+  --grid-gap: 12px;
+  --grid-item-size: 250px;
+
+  display: grid;
+  grid-gap: var(--grid-gap);
+  margin: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-size), 1fr));
+}
