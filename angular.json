@@ -94,9 +94,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/apartments/jest.config.js",
-            "tsConfig": "apps/apartments/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/apartments/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -177,7 +175,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -203,7 +200,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/api-interfaces/jest.config.js",
-            "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
