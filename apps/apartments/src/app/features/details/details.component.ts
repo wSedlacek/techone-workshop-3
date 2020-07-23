@@ -18,13 +18,10 @@ interface TableData {
 export class DetailsComponent {
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly service: ApartmentService
+    private readonly apartments: ApartmentService
   ) {}
 
-  public readonly details$ = this.route.paramMap.pipe(
-    map((params) => params.get('id')),
-    switchMap((id) => this.service.getApartment(id))
-  );
+  public readonly details$ = this.route.data.pipe(map((data) => data.details));
 
   public convertToTable(object: object): TableData[] {
     return Object.entries(object)
@@ -36,6 +33,6 @@ export class DetailsComponent {
   }
 
   public applyForLease(id: string): void {
-    this.service.applyForLease(id);
+    this.apartments.applyForLease(id);
   }
 }
