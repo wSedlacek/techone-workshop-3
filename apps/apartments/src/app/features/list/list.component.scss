@@ -7,3 +7,12 @@
   margin: var(--grid-gap);
   grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-size), 1fr));
 }
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-header {
+  flex: 1;
+}
