@@ -23,6 +23,10 @@ export class DetailsComponent {
 
   public readonly details$ = this.route.data.pipe(map((data) => data.details));
 
+  public applyForLease(id: string): void {
+    this.apartments.applyForLease(id);
+  }
+
   public convertToTable(object: object): TableData[] {
     return Object.entries(object)
       .filter(([key]) => key !== 'id')
@@ -30,9 +34,5 @@ export class DetailsComponent {
         item,
         cost,
       }));
-  }
-
-  public applyForLease(id: string): void {
-    this.apartments.applyForLease(id);
   }
 }

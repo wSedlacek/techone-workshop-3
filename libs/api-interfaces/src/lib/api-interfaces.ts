@@ -1,4 +1,4 @@
-import { Apartment, Fees, Rent } from '@prisma/client';
+import type { Apartment, Fees, Rent } from '@prisma/client';
 
 export type ApartmentItemDTO = Pick<Apartment, 'id' | 'name'>;
 export type ApartmentListDTO = ApartmentItemDTO[];
