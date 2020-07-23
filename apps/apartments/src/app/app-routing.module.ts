@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./features/list/list.module').then((m) => m.ListModule),
+      import('./lazy/list/list.module').then((m) => m.ListModule),
   },
   {
     path: ':id',
     loadChildren: () =>
-      import('./features/details/details.module').then((m) => m.DetailsModule),
+      import('./lazy/details/details.module').then((m) => m.DetailsModule),
   },
   {
     path: '**',
