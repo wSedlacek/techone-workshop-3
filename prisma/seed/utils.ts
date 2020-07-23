@@ -1,44 +1,46 @@
 import { PrismaClient } from '@prisma/client';
 
+import axiosObservable from 'axios-observable';
+import { delay, map } from 'rxjs/operators';
+
+import * as faker from 'faker';
+
 const prisma = new PrismaClient();
 
 export const connect = () => prisma.connect();
 export const disconnect = () => prisma.disconnect();
 
 export const seed = async () => {
-  await prisma.apartment.create({
-    data: {
-      name: 'Some Cool Place',
-      address: '123 Cool Ave',
-      moveIn: new Date('2020-10-05T14:48:00.000Z'),
-      rent: {
-        create: {
-          monthly: 500,
-          pet: 0,
+  for (let i = 0; i < 100; i += 1) {
+    await prisma.apartment.create({
+      data: {
+        name: faker.company.companyName(),
+        description: faker.lorem.paragraphs(faker.random.number(3)),
+        photoURL: await axiosObservable
+          .get('https://source.unsplash.com/featured/?apartments')
+          .pipe(
+            map((res) => `https://images.unsplash.com${res.request.path}`),
+            delay(5000)
+          )
+          .toPromise(),
+        address: faker.address.streetAddress(true),
+        moveIn: new Date(faker.date.future(0)),
+        rent: {
+          create: {
+            monthly: parseFloat(faker.finance.amount(500, 3000)),
+            pet: parseFloat(faker.finance.amount(0, 500)),
+          },
+        },
+        fees: {
+          create: {
+            admin: parseFloat(faker.finance.amount(0, 1000)),
+            application: parseFloat(faker.finance.amount(0, 1000)),
+            pet: parseFloat(faker.finance.amount(0, 1000)),
+          },
         },
       },
-      fees: {
-        create: { admin: 100, application: 100, pet: 200 },
-      },
-    },
-  });
-
-  await prisma.apartment.create({
-    data: {
-      name: 'Some Place',
-      address: '231 Place Blvd',
-      moveIn: new Date('2020-08-05T14:48:00.000Z'),
-      rent: {
-        create: {
-          monthly: 900,
-          pet: 50,
-        },
-      },
-      fees: {
-        create: { admin: 50, application: 200, pet: 125 },
-      },
-    },
-  });
+    });
+  }
 };
 
 /**

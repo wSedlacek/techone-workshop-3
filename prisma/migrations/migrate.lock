@@ -1,3 +1,6 @@
 # Prisma Migrate lockfile v1
 
 20200720095903-init
+20200722021110-photos
+20200722022722-details
+20200722023043-additional-details

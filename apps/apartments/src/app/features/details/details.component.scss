@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 12px 12px 0 12px;
+}
+
+mat-card {
+  max-width: 800px;
+
+  img {
+    max-height: 500px;
+    object-fit: cover;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  h3:not(:first-child) {
+    margin-top: 12px;
+  }
+
+  table {
+    width: 100%;
+
+    td {
+      width: 50%;
+    }
+  }
+}

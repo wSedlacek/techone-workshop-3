@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApartmentItemDTO } from '@final/api-interfaces';
-import { ApartmentService } from '../shared';
+import { ApartmentService } from '../../shared';
 
 @Component({
   templateUrl: './list.component.html',
@@ -10,10 +10,14 @@ import { ApartmentService } from '../shared';
 export class ListComponent implements OnInit {
   constructor(private readonly service: ApartmentService) {}
 
-  public readonly apartments$ = this.service.apartments$;
+  public readonly apartments$ = this.service.getApartments();
 
   @Override()
   public ngOnInit(): void {}
+
+  public applyForLease(id: string): void {
+    this.service.applyForLease(id);
+  }
 
   public trackById(_i: number, { id }: ApartmentItemDTO): string {
     return id;
