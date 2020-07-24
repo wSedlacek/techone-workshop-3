@@ -1,12 +1,14 @@
-<mat-card
-  *ngFor="let apartment of apartments$ | async; trackBy: trackById"
-  class="mat-elevation-z8"
->
-  <mat-card-header>
-    <mat-card-title>{{ apartment.name }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-button [routerLink]="apartment.id">Details</button>
-    <button mat-button (click)="applyForLease(apartment.id)">Apply</button>
-  </mat-card-actions>
-</mat-card>
+<div class="grid">
+  <mat-card
+    *ngFor="let apartment of apartments$ | async; trackBy: trackById"
+    class="mat-elevation-z8"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ apartment.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button [routerLink]="apartment.id">Details</button>
+      <button mat-button (click)="applyForLease(apartment.id)">Apply</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

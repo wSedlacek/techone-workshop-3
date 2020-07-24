@@ -1,18 +1,26 @@
 :host {
   --grid-gap: 12px;
   --grid-item-size: 250px;
-
-  display: grid;
-  grid-gap: var(--grid-gap);
+  display: block;
   margin: var(--grid-gap);
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-size), 1fr));
+
+  .grid {
+    display: grid;
+    grid-gap: var(--grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-size), 1fr));
+  }
 }
 
 mat-card {
   display: flex;
   flex-direction: column;
-}
 
-mat-card-header {
-  flex: 1;
+  mat-card-header {
+    flex: 1;
+  }
+
+  img {
+    height: 200px;
+    object-fit: cover;
+  }
 }
