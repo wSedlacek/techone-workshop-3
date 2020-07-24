@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () =>
-      import('./lazy/list/list.module').then((m) => m.ListModule),
-  },
   {
     path: ':id',
     loadChildren: () =>
       import('./lazy/details/details.module').then((m) => m.DetailsModule),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./lazy/list/list.module').then((m) => m.ListModule),
   },
   {
     path: '**',
@@ -20,7 +21,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: QuicklinkStrategy,
+      scrollPositionRestoration: 'enabled',
+    }),
   ],
   exports: [RouterModule],
 })
