@@ -3,7 +3,8 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 import { ApartmentDetailsDTO } from '@final/api-interfaces';
 import { Observable } from 'rxjs';
-import { ApartmentService } from '../../shared';
+
+import { ApartmentService } from '../../core';
 
 @Injectable({ providedIn: 'root' })
 export class DetailsResolver implements Resolve<ApartmentDetailsDTO> {

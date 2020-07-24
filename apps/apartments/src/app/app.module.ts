@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './components/nav/nav.component';
+import { NavComponent } from './core';
 import { SharedModule } from './shared';
 
 @NgModule({

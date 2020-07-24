@@ -4,6 +4,10 @@ export interface SubscriptionLike {
   unsubscribe(): void;
 }
 
+/**
+ * Provides an easy way to group subscriptions and unsubscribe from them all at once
+ * Inspired heavily by `subsink`
+ */
 export class Subscriptions extends Array<SubscriptionLike> {
   /**
    * Subscription sink that holds Observable subscriptions
