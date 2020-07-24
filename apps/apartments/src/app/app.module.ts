@@ -4,25 +4,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './core';
-import { SharedModule } from './shared';
+import { CoreModule } from './core';
 
 @NgModule({
   imports: [
-    SharedModule,
     AppRoutingModule,
+    CoreModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatToolbarModule,
   ],
-  declarations: [AppComponent, NavComponent],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
